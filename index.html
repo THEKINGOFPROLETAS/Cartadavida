@@ -429,7 +429,24 @@
       margin-top: 4px;
     }
 
-    /* QR Code placeholder */
+    /* Passo a passo de pagamento */
+    .como-pagar {
+      background: var(--creme);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .como-pagar strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--bordo-dark);
+    }
+
+    /* QR Code área */
     .qrcode-area {
       background: var(--creme);
       border: 2px dashed var(--bordo-light);
@@ -447,8 +464,6 @@
       height: 220px;
       border-radius: 8px;
       border: 3px solid var(--creme-dk);
-      /* substitua pelo seu QR code real */
-      background: #ddd;
       object-fit: cover;
     }
 
@@ -478,18 +493,26 @@
       text-align: center;
     }
 
+    /* Pix Copia e Cola */
+    .pix-label {
+      font-size: 13px;
+      color: var(--texto-suave);
+      margin-bottom: 8px;
+    }
+
     .pix-chave {
       background: var(--creme);
       border: 1px solid var(--creme-dk);
       border-radius: 6px;
       padding: 10px 16px;
       font-family: monospace;
-      font-size: 15px;
+      font-size: 12px;
       color: var(--bordo-dark);
       font-weight: 700;
       cursor: pointer;
       transition: background 0.15s;
       word-break: break-all;
+      line-height: 1.5;
     }
 
     .pix-chave:hover {
@@ -594,23 +617,30 @@
         transform: none;
       }
     }
-  </style><!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1521615239459512');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1521615239459512');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -639,7 +669,7 @@ src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
       um presente eterno para seus filhos e netos.
     </p>
 
-    <a href="#pagamento" class="btn-cta">QUERO MEU MEMORIAL AGORA →</a>
+    <a href="#pagamento" class="btn-cta" onclick="trackClick('CTA_Hero')">QUERO MEU MEMORIAL AGORA →</a>
 
     <p class="garantia-mini">🔒 Pagamento via PIX · Entrega em até 3 horas · Garantia total</p>
 
@@ -673,7 +703,7 @@ src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
 
       <div class="passo">
         <div class="passo-numero">Passo 3</div>
-        <div class="pasto-icone">📩</div>
+        <div class="passo-icone">📩</div>
         <h3>Você recebe</h3>
         <p>O PDF completo com áudio chega no seu e-mail em até 3 horas. Pronto para guardar e compartilhar.</p>
       </div>
@@ -718,7 +748,7 @@ src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
     </ul>
 
     <div style="margin-top: 48px;">
-      <a href="#pagamento" class="btn-cta">GARANTIR MEU MEMORIAL →</a>
+      <a href="#pagamento" class="btn-cta" onclick="trackClick('CTA_Recebe')">GARANTIR MEU MEMORIAL →</a>
     </div>
   </section>
 
@@ -766,7 +796,7 @@ src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
       Não deixe suas memórias se perderem com o tempo.
       Seus filhos e netos merecem conhecer quem você é — do jeito mais bonito possível.
     </p>
-    <a href="#pagamento" class="btn-cta-branco">QUERO GUARDAR MINHA HISTÓRIA →</a>
+    <a href="#pagamento" class="btn-cta-branco" onclick="trackClick('CTA_Apoio')">QUERO GUARDAR MINHA HISTÓRIA →</a>
   </section>
 
 
@@ -786,24 +816,30 @@ src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
         <p class="preco-desc">Pagamento único via PIX — seguro e instantâneo</p>
       </div>
 
+      <!-- Passo a passo de como pagar -->
+      <div class="como-pagar">
+        <strong>Como pagar:</strong>
+        1️⃣ Abra o app do seu banco<br />
+        2️⃣ Escolha "Pix Copia e Cola" (ou "Ler código")<br />
+        3️⃣ Toque no campo abaixo para copiar o código<br />
+        4️⃣ Cole no app — o valor de R$ 97,00 já vem preenchido<br />
+        5️⃣ Confirme o pagamento
+      </div>
+
       <!-- QR CODE PIX -->
       <div class="qrcode-area">
-        <!-- 
-          INSTRUÇÃO: substitua o bloco abaixo por:
-          <img src="qrcode.png" alt="QR Code PIX Carta da Vida" style="width:220px;border-radius:8px;" />
-          após fazer upload do seu QR Code no repositório do GitHub.
-        -->
-       <img src="qrcode.png" alt="QR Code PIX Carta da Vida" style="width:220px;border-radius:8px;border:3px solid #EAE2D4;" />
+        <img src="qrcode.png" alt="QR Code PIX Carta da Vida"
+          style="width:220px;border-radius:8px;border:3px solid #EAE2D4;"
+          onclick="trackClick('QRCode_View')" />
 
         <p style="font-size:13px;color:var(--texto-suave);text-align:center;margin-top:4px;">
           Aponte a câmera do celular para o QR Code acima
         </p>
       </div>
 
-      <!-- Chave PIX copiável -->
-      <p style="font-size:13px;color:var(--texto-suave);margin-bottom:8px;">Ou copie a chave PIX abaixo:</p>
-      <div class="pix-chave" id="chave-pix" onclick="copiarChave()" title="Clique para copiar">00020126700014BR.GOV.BCB.PIX0136582a4e59-219a-4f9e-8dde-ee294ce441d20208obrigado520400005303986540597.005802BR5925Yann Zheus Bezerra Goncal6009SAO PAULO62140510WRrFjidX3M63043DFE
-      </div>
+      <!-- Pix Copia e Cola -->
+      <p class="pix-label">Ou toque para copiar o código Pix Copia e Cola (valor R$ 97,00 já incluso):</p>
+      <div class="pix-chave" id="chave-pix" onclick="copiarChave()" title="Toque para copiar">00020126700014BR.GOV.BCB.PIX0136582a4e59-219a-4f9e-8dde-ee294ce441d20208obrigado520400005303986540597.005802BR5925Yann Zheus Bezerra Goncal6009SAO PAULO62140510WRrFjidX3M63043DFE</div>
       <p style="font-size:12px;color:var(--texto-suave);margin-top:6px;" id="msg-copiado"></p>
 
       <!-- Instrução pós-pagamento -->
@@ -811,8 +847,8 @@ src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
         Após o pagamento, <strong>envie o comprovante para o WhatsApp</strong> abaixo e receba o link do formulário com
         suas perguntas:
       </p>
-      <a href="https://wa.me/+5588997910423" target="_blank" class="btn-cta"
-        style="margin-top:16px;display:inline-block;">
+      <a href="https://wa.me/+5588997910423" target="_blank" class="btn-cta" style="margin-top:16px;display:inline-block;"
+        onclick="trackClick('WhatsApp_Comprovante')">
         📲 Enviar comprovante no WhatsApp
       </a>
 
@@ -870,15 +906,31 @@ src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
 
     iniciarContador();
 
-    // ── Copiar chave PIX ──
+    // ── Rastreamento de cliques no Pixel da Meta ──
+    // Dispara o evento "Lead" sempre que o usuário interage com algo
+    // que indica intenção real de comprar (CTA, QR Code, copiar PIX, WhatsApp).
+    // O parâmetro "content_name" identifica QUAL elemento foi clicado,
+    // para você ver no Gerenciador de Eventos qual ponto do funil
+    // está recebendo mais interação.
+    function trackClick(nomeDoElemento) {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', { content_name: nomeDoElemento });
+      }
+      console.log('Evento rastreado:', nomeDoElemento);
+    }
+
+    // ── Copiar código Pix Copia e Cola ──
     function copiarChave() {
       const chave = document.getElementById('chave-pix').textContent.trim();
       const msg = document.getElementById('msg-copiado');
 
+      // Rastreia o clique de cópia como sinal forte de intenção de compra
+      trackClick('PixCopiaCola_Copiado');
+
       if (navigator.clipboard) {
         navigator.clipboard.writeText(chave).then(() => {
-          msg.textContent = '✅ Chave PIX copiada!';
-          setTimeout(() => msg.textContent = '', 2500);
+          msg.textContent = '✅ Código copiado! Cole no app do seu banco.';
+          setTimeout(() => msg.textContent = '', 3000);
         });
       } else {
         // fallback para celulares mais antigos
@@ -888,8 +940,8 @@ src="https://www.facebook.com/tr?id=1521615239459512&ev=PageView&noscript=1"
         input.select();
         document.execCommand('copy');
         document.body.removeChild(input);
-        msg.textContent = '✅ Chave PIX copiada!';
-        setTimeout(() => msg.textContent = '', 2500);
+        msg.textContent = '✅ Código copiado! Cole no app do seu banco.';
+        setTimeout(() => msg.textContent = '', 3000);
       }
     }
 
